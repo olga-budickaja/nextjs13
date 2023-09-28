@@ -37,3 +37,4 @@ next-env.d.ts
 .prettierrc
 .gitignore
 .eslintrc.json
+.idea

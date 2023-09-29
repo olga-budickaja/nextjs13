@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title: 'DevFlow',
   description: 'A platform for creating and answering programming questions for a community around the world. Here you can explore topics related to web development and mobile applications.A platform for creating and answering programming questions for a community around the world. Here you can explore topics related to web development and mobile applications.',
   icons: {
-    icon: '/assets/images/site-logo.svg'
+    icon: '/favicon.ico'
   }
 }
 

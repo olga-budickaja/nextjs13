@@ -5,9 +5,6 @@ import {
     Sheet,
     SheetClose,
     SheetContent,
-    SheetDescription,
-    SheetHeader,
-    SheetTitle,
     SheetTrigger,
   } from "@/components/ui/sheet"
 import Image from '@/node_modules/next/image'
@@ -16,6 +13,7 @@ import { SignedOut } from '@clerk/nextjs'
 import { Button } from '@/components/ui/button'
 import { sidebarLinks } from '@/constants/index'
 import { usePathname } from '@/node_modules/next/navigation'
+import { NavLink } from './NavLink'
 
 const NavContent = () => {
     const pathname = usePathname();
@@ -26,29 +24,15 @@ const NavContent = () => {
 
                 return (
                     <SheetClose asChild key={item.route}>
-                        <Link 
-                            href={item.route}
-                            className={`${
-                                isActive 
-                                ? 'primary-gradient rounded-lg text-light-900' 
-                                : 'text-dark300_light900'
-                            } flex items-center justify-start gap-4 bg-transparent p-4`}
-                        >
-                            <Image
-                                src={item.imgURL}
-                                alt={item.label}
-                                width={20}
-                                height={20}
-                                className={`${isActive ? "" : "invert-colors"}`}
-                            />
-                            <p className={`${isActive ? 'base-bold' : 'base-medium'}`}>
-                                {item.label}
-                            </p>
-                        </Link>
+                        <NavLink
+                            isActive={isActive}
+                            route={item.route}
+                            imgUrl={item.imgURL}
+                            label={item.label}
+                        />
                     </SheetClose> 
                 )
-
-                })}
+            })}
         </section>
     )
 }

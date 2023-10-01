@@ -1,3 +1,4 @@
+import LeftSidebar from '@/components/shared/sidebar/LeftSidebar';
 import Navbar from '@/components/shared/navbar/Navbar';
 import React from 'react';
 
@@ -6,7 +7,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <main className="background-light850_dark100 relative">
       <Navbar />
       <div className="flex">
-        LeftSideBar
+        <section className='custom-scrollbar background-light900_dark200 light-border sticky left-0 top-0 flex h-screen w-fit flex-col justify-between  overflow-y-auto border-r p-6 pt-36 shadow-light-300 dark:shadow-none max-sm:hidden lg:w-[266px]'
+        >
+          <LeftSidebar />
+        </section>
+        
         <section className="flex min-h-screen flex-1 flex-col px-6 pb-6 pt-36 max-md:pb-14 sm:px-14 ">
           <div className="mx-auto w-full max-w-5xl">
             {children}
@@ -15,7 +20,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         RightSideBar
       </div>
 
-      Toaster
     </main>
   );
 };

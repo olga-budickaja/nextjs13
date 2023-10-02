@@ -5,7 +5,7 @@ import { usePathname } from '@/node_modules/next/navigation';
 import { NavLink } from '../navbar/NavLink';
 import { Button } from '@/components/ui/button';
 import Link from '@/node_modules/next/link';
-import { SignedOut } from "@clerk/nextjs";
+import { SignedOut, SignedIn } from "@clerk/nextjs";
 import Image from '@/node_modules/next/image';
 
 
@@ -47,9 +47,10 @@ const LeftSidebar = () => {
                   className="invert-colors"
                 />
               </div>
-
             </Link>
+          </SignedOut>
 
+          <SignedIn>
             <Link href="/sign-up">
               <Button className='small-medium light-border-2 btn-tertiary text-dark400_light900 min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none max-lg:hidden'>
                     Sign Up
@@ -65,7 +66,7 @@ const LeftSidebar = () => {
                 />
               </div>
             </Link>
-          </SignedOut>
+          </SignedIn>
 
 
 

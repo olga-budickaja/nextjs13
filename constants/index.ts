@@ -83,3 +83,4 @@ export const sidebarLinks:SidebarLink[] = [
       GOLD: 100000,
     },
   };
+

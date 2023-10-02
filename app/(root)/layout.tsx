@@ -24,6 +24,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </section>
       </div>
 
+      Toaster
     </main>
   );
 };

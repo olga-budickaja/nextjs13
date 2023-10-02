@@ -1,6 +1,7 @@
 import LeftSidebar from '@/components/shared/sidebar/LeftSidebar';
 import Navbar from '@/components/shared/navbar/Navbar';
 import React from 'react';
+import { RightSidebar } from '@/components/shared/sidebar/RightSidebar';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -17,7 +18,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             {children}
             </div>
         </section>
-        RightSideBar
+
+        <section className='custom-scrollbar background-light900_dark200 light-border sticky right-0 top-0 flex h-screen w-[350px] flex-col gap-6 overflow-y-auto border-l p-6 pt-36 shadow-light-300 dark:shadow-none max-xl:hidden'>
+          <RightSidebar />
+        </section>
       </div>
 
     </main>

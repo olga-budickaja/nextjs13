@@ -47,7 +47,7 @@ const Question = () => {
 
             // navigate to home page
         } catch (error) {
-            console.log(error);
+            console.log(error)
         } finally {
             setIsSubmitting(false);
         }

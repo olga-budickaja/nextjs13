@@ -4,6 +4,7 @@ import LocalSearchbar from '@/components/shared/search/LocalSearchbar'
 import { Button } from '@/components/ui/button'
 import { HomePageFilters } from '@/constants/filters'
 import Link from '@/node_modules/next/link'
+import QuestionCards from '@/components/cards/QuestionCards'
 
 
 
@@ -41,6 +42,8 @@ export default function Home() {
       </div>
 
       <HomeFilters />
+
+      <QuestionCards />
     </>
   )
 }

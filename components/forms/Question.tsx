@@ -20,14 +20,20 @@ import { QuestionsSchema } from "@/lib/validation"
 import { Badge } from '../ui/badge';
 import Image from '@/node_modules/next/image';
 import { createQuestion } from '@/lib/actions/question.action';
-
-
+import { usePathname, useRouter } from '@/node_modules/next/navigation';
 
 const type: any = 'create';
 
-const Question = () => {
+interface Props {
+    mongoUserId: string;
+}
+
+const Question = ({ mongoUserId }: Props) => {
     const editorRef = useRef(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const router = useRouter();
+    const pathName = usePathname();
 
     const form = useForm<z.infer<typeof QuestionsSchema>>({
         resolver: zodResolver(QuestionsSchema),
@@ -46,9 +52,15 @@ const Question = () => {
             // make an assync call to your API -> create a question
             // contain all form data
 
-            await createQuestion({});
+            await createQuestion({
+                title: values.title,
+                content: values.explanation,
+                tags: values.tags,
+                author: JSON.parse(mongoUserId),
+            });
 
             // navigate to home page
+            router.push('/');
         } catch (error) {
             console.log(error)
         } finally {
@@ -104,7 +116,7 @@ const Question = () => {
                 Question Title
                 <span className="ml-1 text-primary-500">*</span>
             </FormLabel>
-            <FormControl classname="mt-3.5">
+            <FormControl className="mt-3.5">
               <Input 
                 className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
                 {...field} 
@@ -168,7 +180,7 @@ const Question = () => {
                 Tags
                 <span className="text-primary-500">*</span>
             </FormLabel>
-            <FormControl classname="mt-3.5">
+            <FormControl className="mt-3.5">
                 <>
                     <Input 
                         className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
@@ -222,7 +234,6 @@ const Question = () => {
                 </>
             )
         }
-        Submit
     </Button>
     </form>
   </Form>

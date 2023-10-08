@@ -5,6 +5,7 @@ const nextConfig = {
         mdxRs: true,
         serverComponentsExternalPackages: [
             'dashboard.clerk.com',
+            'mongoose'
         ],
     }
 }

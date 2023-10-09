@@ -4,11 +4,14 @@ import LocalSearchbar from '@/components/shared/search/LocalSearchbar'
 import { Button } from '@/components/ui/button'
 import { HomePageFilters } from '@/constants/filters'
 import Link from '@/node_modules/next/link'
-import QuestionCards from '@/components/cards/QuestionCards'
+import { getQuestions } from '@/lib/actions/question.action'
+import QuestionCard from '@/components/cards/QuestionCard'
+import NoResult from '@/components/shared/NoResult'
 
 
+export default async function Home() {
+  const result = await getQuestions({});
 
-export default function Home() {
   return (
     <>
       <div className='flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center'>
@@ -43,7 +46,29 @@ export default function Home() {
 
       <HomeFilters />
 
-      <QuestionCards />
+      <div className='mt-10 flex w-full flex-col gap-6'>
+        {result.questions.length > 0 
+            ? result.questions.map((item: any) => (
+                <QuestionCard 
+                    key={item._id}
+                    _id={item._id}
+                    title={item.title}
+                    tags={item.tags}
+                    author={item.author}
+                    createdAt={item.createdAt}
+                    upvotes={item.upvotes}
+                    answers={item.answers}
+                    views={item.views}
+                />
+            )) : (
+            <NoResult 
+                title='There’s no question to show'
+                description='Be the first to break the silence! 🚀 Ask a Question and kickstart the discussion. our query could be the next big thing others learn from. Get involved! 💡'
+                link="/ask-question"
+                linkTitle="Ask a Question"
+            />
+        )}
+    </div>
     </>
   )
 }

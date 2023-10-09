@@ -1,6 +1,6 @@
 "use server"
 
-import User from "@/lib/models/user.model";
+import User from "@/database/user.model";
 import { connectToDatabase } from "@/lib/mongoose"
 
 export async function getUserById(params: any) {

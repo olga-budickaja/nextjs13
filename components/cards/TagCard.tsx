@@ -1,5 +1,4 @@
 import Link from "@/node_modules/next/link";
-import { Badge } from "../ui/badge";
 
 interface Props {
     tag: {

@@ -1,14 +1,16 @@
 "use client"
 
 import { Button } from '@/components/ui/button'
-import { HomePageFilters, UserFilters } from '@/constants/filters';
+
 
 interface FiltersButtonProps {
-    homePageName: string;
+  filters: {
+    name: string,
+    value: string
+  }[],
 }
 
-const FiltersButton = ({ homePageName }: FiltersButtonProps) => {
-    const filters = homePageName === 'home' ? HomePageFilters : UserFilters;
+const FiltersButton = ({ filters }: FiltersButtonProps) => {
     const active = '';
   return (
     <div className='mt-10 hidden flex-wrap gap-3 md:flex'>

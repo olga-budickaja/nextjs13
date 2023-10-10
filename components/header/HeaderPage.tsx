@@ -1,4 +1,3 @@
-import { HomePageFilters, UserFilters } from '@/constants/filters'
 import Link from '@/node_modules/next/link'
 import Filter from '../shared/filters/Filter'
 import FiltersButton from '../shared/filters/FiltersButton'
@@ -18,6 +17,10 @@ interface HeaderProps {
     containerClassesFilter?: string;
     routeSearch: string;
     filterComponent: string;
+    filters: {
+      name: string,
+      value: string
+    }[],
 }
 
 const HeaderPage = ({
@@ -32,8 +35,11 @@ const HeaderPage = ({
     containerClassesFilter,
     routeSearch,
     filterComponent,
+    filters,
 } : HeaderProps) => {
+
   return (
+    
     <>
     <div className='flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center'>
         <h1 className='h1-bold text-dark100_light900'>{title}</h1>
@@ -60,7 +66,7 @@ const HeaderPage = ({
         />
         
         <Filter
-          filters={filterComponent === 'home' ? HomePageFilters : UserFilters}
+          filters={filters}
           otherClasses={otherClassesFilter}
           containerClasses={containerClassesFilter}
           placeholder={placeholderFilter}
@@ -68,7 +74,7 @@ const HeaderPage = ({
     </div>
 
       <FiltersButton 
-        homePageName={filterComponent}
+        filters={filters}
       />
     </>
   )

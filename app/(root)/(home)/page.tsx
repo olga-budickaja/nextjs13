@@ -2,6 +2,7 @@ import { getQuestions } from '@/lib/actions/question.action'
 import QuestionCard from '@/components/cards/QuestionCard'
 import NoResult from '@/components/shared/NoResult'
 import HeaderPage from '@/components/header/HeaderPage'
+import { HomePageFilters } from '@/constants/filters';
 
 
 export default async function Home() {
@@ -19,6 +20,7 @@ export default async function Home() {
         placeholderSearch='Search for questions...'
         otherClassesSearch='flex-1'
         filterComponent='home'
+        filters={HomePageFilters}
         otherClassesFilter='min-h-[56px] sm:min-w-[170px]'
         containerClassesFilter='hidden max-md:flex'
         placeholderFilter='Select a Filters'

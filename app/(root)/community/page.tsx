@@ -1,5 +1,6 @@
 import UserCard from '@/components/cards/UserCard';
 import HeaderPage from '@/components/header/HeaderPage'
+import { UserFilters } from '@/constants/filters';
 import { getAllUsers } from '@/lib/actions/user.action'
 import Link from '@/node_modules/next/link';
 
@@ -17,6 +18,7 @@ const Community = async () => {
             placeholderSearch='Search by Username...'
             otherClassesSearch='flex-1'
             filterComponent='user'
+            filters={UserFilters}
             otherClassesFilter='min-h-[56px] sm:min-w-[170px]'
             containerClassesFilter='hidden max-md:flex'
             placeholderFilter='Select a Filters'

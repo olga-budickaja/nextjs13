@@ -4,27 +4,24 @@ import { getTopInteractedTags } from "@/lib/actions/tag.action";
 import { Badge } from "../ui/badge";
 import { RenderTag } from "../shared/RenderTag";
 
-interface UserCardProps {
+interface Props {
     user: {
         _id: string;
         clerkId: string;
         picture: string;
         name: string;
         username: string;
-        tags?: Array<object>;
-        reputation: number;
-        joinAt: Date;
     }
 }
 
-const UserCard = async ({ user }: UserCardProps) => {
+const UserCard = async ({ user }: Props) => {
   const interactedTags = await getTopInteractedTags({ userId: user._id })
   return (
     <Link 
         href={`/profile/${user.clerkId}`} 
         className="shadow-light100_darknone w-full max-xs:min-w-full xs:w-[260px]"
     >
-        <article className="background-light900_dark200 light-border flex w-full flex-col items-center justify-center rounded-2xl border p-8">
+        <div className="background-light900_dark200 light-border flex w-full flex-col items-center justify-center rounded-2xl border p-8">
             <Image 
                 src={user.picture || '/assets/image/avatar.svg'}
                 alt={user.username}
@@ -59,7 +56,7 @@ const UserCard = async ({ user }: UserCardProps) => {
                         </Badge>
                 )}
             </div>
-        </article>
+        </div>
     </Link>
   )
 }

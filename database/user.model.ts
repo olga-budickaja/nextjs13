@@ -8,6 +8,7 @@ export interface IUser extends Document {
     password?: string;
     bio?: string;
     saved?: Schema.Types.ObjectId[];
+    tags?: Schema.Types.ObjectId[];
     picture: string;
     location?: string;
     portfolioWebsite?: string;
@@ -63,6 +64,10 @@ const UserSchema = new Schema<IUser>({
         type: Date, 
         default: Date.now,
     },
+    tags: {
+        type: Schema.Types.ObjectId,
+        ref: 'Tag',
+    }
 })
 
 const User = models.User || model('User', UserSchema);

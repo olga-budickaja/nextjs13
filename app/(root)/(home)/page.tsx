@@ -1,12 +1,7 @@
-import Filter from '@/components/shared/filters/Filter'
-import HomeFilters from '@/components/home/HomeFilters'
-import LocalSearchbar from '@/components/shared/search/LocalSearchbar'
-import { Button } from '@/components/ui/button'
-import { HomePageFilters } from '@/constants/filters'
-import Link from '@/node_modules/next/link'
 import { getQuestions } from '@/lib/actions/question.action'
 import QuestionCard from '@/components/cards/QuestionCard'
 import NoResult from '@/components/shared/NoResult'
+import HeaderPage from '@/components/header/HeaderPage'
 
 
 export default async function Home() {
@@ -14,37 +9,20 @@ export default async function Home() {
 
   return (
     <>
-      <div className='flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center'>
-        <h1 className='h1-bold text-dark100_light900'>All Questions</h1>
-
-        <Link 
-          href="/ask-question"
-          className='flex justify-end max-sm:w-full'
-        >
-          <Button className='primary-gradient min-h-[46px] px-4 py-3 !text-light-900'>
-            Ask a Question
-          </Button>
-        </Link>
-      </div>
-
-      <div className='mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center'>
-        <LocalSearchbar 
-          route="/"
-          iconPosition="left"
-          imgSrc="/assets/icons/search.svg"
-          placeholder="Search for questions"
-          otherClasses='flex-1'
-        />
-        
-        <Filter
-          filters={HomePageFilters}
-          otherClasses="min-h-[56px] sm:min-w-[170px]"
-          containerClasses="hidden max-md:flex"
-          placeholder='Select a Filters'
-        />
-      </div>
-
-      <HomeFilters />
+      <HeaderPage 
+        title='All Questions'
+        urlLink='/ask-question'
+        button
+        buttonName='Ask a Question'
+        routeSearch='/'
+        iconPositionSearch='left'
+        placeholderSearch='Search for questions...'
+        otherClassesSearch='flex-1'
+        filterComponent='home'
+        otherClassesFilter='min-h-[56px] sm:min-w-[170px]'
+        containerClassesFilter='hidden max-md:flex'
+        placeholderFilter='Select a Filters'
+      />
 
       <div className='mt-10 flex w-full flex-col gap-6'>
         {result.questions.length > 0 
@@ -68,7 +46,7 @@ export default async function Home() {
                 linkTitle="Ask a Question"
             />
         )}
-    </div>
+      </div>
     </>
   )
 }

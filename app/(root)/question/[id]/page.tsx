@@ -5,6 +5,7 @@ import Metric from '@/components/shared/Metric';
 import { formatNumberWithExtension, getTimestamp } from '@/lib/utils';
 import ParseHTML from '@/components/shared/ParseHTML';
 import { RenderTag } from '@/components/shared/RenderTag';
+import Answer from '@/components/forms/Answer';
 
 interface QuestionDetailsProps {
     params: {
@@ -73,7 +74,7 @@ const QuestionDetails = async ({ params, searchParams }: QuestionDetailsProps) =
       <ParseHTML data={result.content}/>
 
       <div className='mt-10 flex flex-wrap gap-2'>
-        {result.tags.map((tag) => (
+        {result.tags.map((tag: any) => (
           <RenderTag 
             key={tag._id}
             _id={tag._id}
@@ -82,6 +83,8 @@ const QuestionDetails = async ({ params, searchParams }: QuestionDetailsProps) =
           />
         ))}
       </div>
+
+      <Answer />
     </>
   )
 }

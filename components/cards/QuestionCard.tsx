@@ -18,7 +18,7 @@ interface QuestionProps{
     createdAt?: Date,
     upvotes: number,
     answers?: Array<object>,
-    views?: number,
+    views?: Array<object>,
 }  
 
 const QuestionCard = ({ _id, title, tags, author, createdAt, upvotes, answers, views }: QuestionProps) => {
@@ -76,7 +76,7 @@ const QuestionCard = ({ _id, title, tags, author, createdAt, upvotes, answers, v
             <Metric 
                 imgUrl="/assets/icons/eye.svg"
                 alt="Views"
-                value={formatNumberWithExtension(views)}
+                value={formatNumberWithExtension(views?.length)}
                 title=" Views"
                 textStyles="small-medium text-dark400_light800"
             />
